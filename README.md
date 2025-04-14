@@ -18,7 +18,7 @@ Check it out here: [react-admin-dashboard-chi-roan.vercel.app](https://react-adm
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/react-admin-dashboard.git
+git clone https://github.com/amirtanazzoh/react-admin-dashboard.git
 
 # Navigate into the project directory
 cd react-admin-dashboard

@@ -5,3 +5,5 @@ export const theme = createTheme( {
 
     },
 } );
+
+export const DASHBOARD_SIDEBAR_WIDTH = 240;

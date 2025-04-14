@@ -13,7 +13,9 @@ export default function AppRoutes ()
                 <ProtectedRoute role="admin" >
                     <Dashboard />
                 </ProtectedRoute>
-            } />
+            } >
+                <Route path={ 'forbidden' } element={ <div>forbidden</div> } />
+            </Route>
         </Routes>
     );
 }
