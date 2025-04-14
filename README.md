@@ -36,20 +36,23 @@ The app should now be running at `http://localhost:5137`.
 
 ```
 src/
+├── assets/            # Svg, Png and etc.
 ├── components/        # Reusable UI components
+├── helpers/           # Functions or Object using entire app
 ├── pages/             # Application pages
 ├── redux/             # Redux store and slices
-├── services/          # API calls and mock data
-├── types/             # TypeScript type definitions
-└── styles/            # CSS / styling files
+├── hooks/             # Custom hooks
+└── types/             # TypeScript type definitions
 ```
 
 ## 📦 Technologies Used
 
 - React
 - TypeScript
+- MUI
 - Redux Toolkit
-- Axios or Fetch
+- React Hook Form
+- Axios
 - Fake API (e.g. JSONPlaceholder or local mock data)
 
 ## 📄 License
