@@ -1,54 +1,57 @@
-# React + TypeScript + Vite
+# 🛠️ React Admin Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and responsive admin dashboard built with React and TypeScript, using a fake API to simulate backend data.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Check it out here: [react-admin-dashboard-chi-roan.vercel.app](https://react-admin-dashboard-chi-roan.vercel.app/)
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Responsive design
+- Built with React and TypeScript
+- State management with Redux
+- Fake API integration
+- Clean and minimal UI
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## ⚙️ Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/react-admin-dashboard.git
+
+# Navigate into the project directory
+cd react-admin-dashboard
+
+# Install dependencies
+pnpm install
+
+# Start the development server
+pnpm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The app should now be running at `http://localhost:5137`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📁 Project Structure
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
 ```
+src/
+├── components/        # Reusable UI components
+├── pages/             # Application pages
+├── redux/             # Redux store and slices
+├── services/          # API calls and mock data
+├── types/             # TypeScript type definitions
+└── styles/            # CSS / styling files
+```
+
+## 📦 Technologies Used
+
+- React
+- TypeScript
+- Redux Toolkit
+- Axios or Fetch
+- Fake API (e.g. JSONPlaceholder or local mock data)
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
