@@ -1,11 +1,33 @@
-import { Drawer } from "@mui/material";
+import { Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import { DASHBOARD_SIDEBAR_WIDTH } from "../helpers/theme";
-import { Dispatch, SetStateAction } from "react";
-import { Link, Navigate } from "react-router";
+import { Dispatch, Fragment, SetStateAction, useMemo } from "react";
+import { urls } from "../helpers/urls";
+import { SpaceDashboard } from "@mui/icons-material";
+import { Link } from "react-router";
+import { LibraryBooks, People } from "@material-ui/icons";
+
+
 
 
 export default function SideBar ( { open }: { open: boolean, setOpen: Dispatch<SetStateAction<boolean>>; } )
 {
+    const menuItems = useMemo( () => [
+        {
+            title: 'dashboard',
+            link: urls.dashboard,
+            icon: <SpaceDashboard />,
+        },
+        {
+            title: 'users',
+            link: urls.users,
+            icon: <People />,
+        },
+        {
+            title: 'lessons',
+            link: urls.lessons,
+            icon: <LibraryBooks />,
+        }
+    ], [] );
 
     return (
         <Drawer
@@ -13,18 +35,28 @@ export default function SideBar ( { open }: { open: boolean, setOpen: Dispatch<S
             anchor="left"
             sx={ {
                 width: DASHBOARD_SIDEBAR_WIDTH,
-                position: 'relative'
-
+                position: 'relative',
             } }
             open={ open }
         >
+            <List >
+                { menuItems.map( ( { icon, link, title } ) =>
+                    <Fragment key={ title }>
+                        <ListItem sx={ { width: '100%' } } >
+                            <Link to={ link } style={ { display: 'block', width: '100%' } }>
+                                <ListItemButton >
+                                    <ListItemIcon>
+                                        { icon }
+                                    </ListItemIcon>
+                                    <ListItemText primary={ title } sx={ { textTransform: 'capitalize', color: 'black' } } />
+                                </ListItemButton>
+                            </Link>
+                        </ListItem>
 
-            <Link to={ '/dashboard/forbidden' } >
-                Forbidden
-            </Link>
-            <div style={ { maxWidth: DASHBOARD_SIDEBAR_WIDTH, height: '100%', padding: 4 } }>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero mollitia ut quae natus! Vero nobis fugiat quidem. Architecto explicabo animi ex quo provident accusantium quibusdam nulla voluptas magnam ducimus libero sunt earum, natus iure aliquid nihil. Accusamus in atque doloremque.
-            </div>
+                        <Divider />
+                    </Fragment>
+                ) }
+            </List>
         </Drawer >
 
     );

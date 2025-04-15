@@ -9,8 +9,8 @@ export default function Login ()
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "100vh",
-            width: "100vw"
+            height: "90vh",
+
         } }>
             <LoginForm />
         </Box>

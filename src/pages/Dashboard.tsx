@@ -1,27 +1,44 @@
-import { Box, Grid } from "@mui/material";
-import { Outlet } from "react-router";
-import SideBar from "../components/sidebar";
-import { useState } from "react";
-import { DASHBOARD_SIDEBAR_WIDTH, } from "../helpers/theme";
+import { useQuery } from '@tanstack/react-query';
+import { Box, Card, CardContent, Stack, Typography } from "@mui/material";
+import { getDashboard } from "../services/dashboard";
 
 export default function Dashboard ()
 {
-    const [ open, setOpen ] = useState( true );
+
+    const { data, isLoading, error } = useQuery( { queryFn: getDashboard, queryKey: [ 'dashboard' ] } );
+
+
+    if ( error )
+    {
+        return <div>Error: error found</div>;
+    }
+
+    if ( isLoading )
+    {
+        return <div>Loading...</div>;
+    }
+
+    if ( !data ) return;
 
     return (
-        <Box sx={ { width: '100vw', minHeight: '100vh' } }>
+        <Box>
+            <Stack>
+                <Card>
+                    <CardContent>
+                        <Typography variant="h5" component="div">
+                            User Roles
+                        </Typography>
 
-            <SideBar open={ open } setOpen={ setOpen } />
-
-            <Box
-                sx={ {
-                    width: `calc(100% - ${ DASHBOARD_SIDEBAR_WIDTH + 40 }px)`,
-                    ml: `${ DASHBOARD_SIDEBAR_WIDTH + 40 }px`,
-                } }
-            >
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi maiores veniam ab temporibus maxime molestiae similique, deleniti rem laborum? Vero est esse voluptatem reprehenderit quisquam!
-                <Outlet />
-            </Box>
+                        <Typography sx={ { mb: 1.5 } } color="text.secondary">
+                            { Array.from( Object.entries( data.data.userRoles ) ).map( ( [ key, value ] ) => (
+                                <Typography key={ key } variant="body2">
+                                    { key }: { value }
+                                </Typography>
+                            ) ) }
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </Stack>
         </Box>
     );
 }
