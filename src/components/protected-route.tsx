@@ -2,30 +2,39 @@ import { Fragment, PropsWithChildren } from "react";
 import { useAppSelector } from "../hooks/redux";
 import { Navigate } from "react-router";
 import { urls } from "../helpers/urls";
+import { UserPermissions, UserRole } from "../types/user";
 
-export default function ProtectedRoute ( { children, role = 'admin' }: PropsWithChildren<{ role?: 'admin' | 'user'; }> )
+export default function ProtectedRoute ( { children, permissionType }: PropsWithChildren<{ permissionType: UserPermissions; }> )
 {
 
     const { isLoggedIn, user } = useAppSelector( ( state ) => state.user );
 
-    const havePermission = () =>
-    {
-        if ( role === 'admin' )
-        {
-            return user?.role === 'admin';
-        }
-        else if ( role === 'user' )
-        {
-            return user?.role === 'user' || user?.role === 'admin';
-        }
-    };
-
-    if ( false === isLoggedIn )
+    if ( false === isLoggedIn || null === user )
     {
         return <Navigate to={ urls.login } />;
     }
 
-    if ( false === havePermission() )
+
+    function hasPermission ()
+    {
+        if ( !user || !user.role ) return false;
+
+        const role: UserRole = user.role.toLowerCase() as UserRole;
+
+        if ( user.role === 'admin' ) return true;
+
+        const permissions: Record<UserRole, UserPermissions[]> = {
+            admin: [],
+            student: [ 'view_dashboard_layout' ],
+            teacher: [ 'view_dashboard_layout' ]
+        };
+
+        return permissions[ role ]?.includes( permissionType ) || false;
+    }
+
+
+
+    if ( false === hasPermission() )
     {
         return <Navigate to={ urls.forbidden } />;
     }

@@ -14,7 +14,7 @@ export default function AppRoutes ()
         <Routes>
             <Route path={ urls.login } element={ <Login /> } />
             <Route path={ urls.dashboard } element={
-                <ProtectedRoute role="admin" >
+                <ProtectedRoute permissionType="view_dashboard_layout" >
                     <DashboardLayout />
                 </ProtectedRoute>
             } >
