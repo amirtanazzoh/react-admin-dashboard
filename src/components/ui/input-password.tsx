@@ -1,4 +1,4 @@
-import { Visibility, VisibilityOff } from "@material-ui/icons";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { IconButton, TextField } from "@mui/material";
 import { useState } from "react";
 
