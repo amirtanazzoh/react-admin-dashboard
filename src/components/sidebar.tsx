@@ -2,9 +2,8 @@ import { Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItem
 import { DASHBOARD_SIDEBAR_WIDTH } from "../helpers/theme";
 import { Dispatch, Fragment, SetStateAction, useMemo } from "react";
 import { urls } from "../helpers/urls";
-import { SpaceDashboard } from "@mui/icons-material";
+import { LibraryBooks, People, SpaceDashboard } from "@mui/icons-material";
 import { Link } from "react-router";
-import { LibraryBooks, People } from "@material-ui/icons";
 
 
 

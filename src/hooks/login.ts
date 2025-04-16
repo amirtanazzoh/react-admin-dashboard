@@ -39,13 +39,6 @@ export default function useLogin ()
             return;
         }
 
-        if ( username === 'user' && password === 'user' )
-        {
-            dispatch( setUser( { id: 2, username: 'user', role: 'user' } ) );
-            dispatch( setIsLoggedIn( true ) );
-            return;
-        }
-
         //Simulate a login error
         setError( "username", {
             type: "manual",
