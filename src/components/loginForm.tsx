@@ -38,6 +38,7 @@ export default function LoginForm ()
                         <TextField
                             { ...register( "username", { required: { value: true, message: 'username is required' }, } ) }
                             id="username"
+                            label="Username"
                             placeholder="Username"
                             sx={ { width: '100%', } } />
                         <ErrorMessage

@@ -4,7 +4,7 @@ A simple and responsive admin dashboard built with React and TypeScript, using a
 
 ## 🚀 Live Demo
 
-Check it out here: [react-admin-dashboard-chi-roan.vercel.app](https://react-admin-dashboard-chi-roan.vercel.app/)
+Check it out here: [live demo on vercel](https://amirtanazzoh-react-admin-dashboard.vercel.app/)
 
 ## ✨ Features
 

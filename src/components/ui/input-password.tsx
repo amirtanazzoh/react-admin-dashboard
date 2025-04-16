@@ -11,6 +11,7 @@ export default function InputPassword ( props: any )
             { ...props }
             id="password"
             placeholder="Password"
+            label="Password"
             sx={ { width: '100%' } }
             type={ showPassword ? "text" : "password" }
             slotProps={ {
