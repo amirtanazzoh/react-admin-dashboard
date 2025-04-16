@@ -1,13 +1,38 @@
-import { Fragment, PropsWithChildren } from "react";
-import { useAppSelector } from "../hooks/redux";
+import { Fragment, PropsWithChildren, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { Navigate } from "react-router";
 import { urls } from "../helpers/urls";
 import { UserPermissions, UserRole } from "../types/user";
+import { LoadingPage } from "../pages/loading";
+import { isUserLoggedIn } from "../redux/userSlice";
+import { Box } from "@mui/material";
 
 export default function ProtectedRoute ( { children, permissionType }: PropsWithChildren<{ permissionType: UserPermissions; }> )
 {
 
-    const { isLoggedIn, user } = useAppSelector( ( state ) => state.user );
+    const { isLoggedIn, user, loading } = useAppSelector( ( state ) => state.user );
+    const dispatch = useAppDispatch();
+
+    useEffect( () =>
+    {
+        dispatch( isUserLoggedIn() );
+    }, [] );
+
+    if ( loading === true )
+    {
+        return (
+            <Box sx={ {
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "90vh",
+
+            } }>
+                <LoadingPage />;
+            </Box>
+        );
+
+    }
 
     if ( false === isLoggedIn || null === user )
     {

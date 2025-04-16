@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { urls } from "../helpers/urls";
 import { LoginForm } from "../types/login";
 import { UseFormSetError } from "react-hook-form";
-import { setIsLoggedIn, setUser } from "../redux/userSlice";
+import { isUserLoggedIn, setIsLoggedIn, setUser } from "../redux/userSlice";
 import { getUserByUserName } from "../services/users";
 
 export default function useLogin ()
@@ -17,15 +17,21 @@ export default function useLogin ()
 
     useEffect( () =>
     {
+
         if ( false === isLoggedIn ) return;
         navigate( urls.dashboard );
     }, [ isLoggedIn ] );
+
+    useEffect( () =>
+    {
+        dispatch( isUserLoggedIn() );
+    }, [ dispatch ] );
 
 
     async function login ( loginFormData: LoginForm, setError: UseFormSetError<LoginForm> )
     {
 
-        const { username, password } = loginFormData;
+        const { username, password, remember } = loginFormData;
 
         //for testing purposes, i will simulate a login delay
         await new Promise( ( resolve ) => setTimeout( resolve, 1000 ) );
@@ -42,6 +48,12 @@ export default function useLogin ()
             } );
 
             return;
+        }
+
+
+        if ( remember )
+        {
+            localStorage.setItem( "user", JSON.stringify( user ) );
         }
 
 
