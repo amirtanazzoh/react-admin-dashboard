@@ -1,0 +1,21 @@
+import { User } from "../types/user";
+import { appAxios } from "./main";
+
+export async function getAllUsers ( page: number = 1, limit: number = 10 ): Promise<User[]>
+{
+    return appAxios.get( '/users', {
+        params: {
+            '_page': page,
+            '_per_page': limit,
+        }
+    } ).then( ( { data } ) => data );
+}
+
+export async function getUserByUserName ( username: string ): Promise<User>
+{
+    return appAxios.get( `/users`, {
+        params: {
+            'username': username,
+        }
+    } ).then( ( { data } ) => data[ 0 ] );
+}
