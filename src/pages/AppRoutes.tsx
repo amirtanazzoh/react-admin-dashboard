@@ -5,7 +5,8 @@ import { namespace, urls } from "../helpers/urls";
 import ProtectedRoute from "../components/protected-route";
 import { Users } from "./Users";
 import Dashboard from "./Dashboard";
-import Lessons from "./Lessons";
+import Courses from "./Courses";
+import SingleCourse from "./SingleCourse";
 
 export default function AppRoutes ()
 {
@@ -21,7 +22,8 @@ export default function AppRoutes ()
                 <Route index element={ <Dashboard /> } />
                 <Route path={ namespace.forbidden } element={ <div>forbidden</div> } />
                 <Route path={ namespace.users } element={ <Users /> } />
-                <Route path={ namespace.lessons } element={ <Lessons /> } />
+                <Route path={ namespace.courses } element={ <Courses /> } />
+                <Route path={ `${ namespace.courses }/:id` } element={ <SingleCourse /> } />
             </Route>
         </Routes>
     );

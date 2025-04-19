@@ -26,8 +26,8 @@ export default function SideBar ( { open }: { open: boolean, setOpen: Dispatch<S
             icon: <People />,
         },
         {
-            title: 'lessons',
-            link: urls.lessons,
+            title: 'courses',
+            link: urls.courses,
             icon: <LibraryBooks />,
         }
     ], [] );

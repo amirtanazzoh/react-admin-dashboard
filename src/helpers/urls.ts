@@ -3,7 +3,8 @@ export const namespace = {
     dashboard: 'dashboard',
     forbidden: 'forbidden',
     users: 'users',
-    lessons: 'lessons'
+    lessons: 'lessons',
+    courses: 'courses'
 };
 
 export function makeUrl ( ...args: string[] ): string
@@ -22,5 +23,5 @@ export const urls = {
     dashboard: makeUrl( namespace.dashboard ),
     forbidden: makeUrl( namespace.dashboard, namespace.forbidden ),
     users: makeUrl( namespace.dashboard, namespace.users ),
-    lessons: makeUrl( namespace.dashboard, namespace.lessons )
+    courses: makeUrl( namespace.dashboard, namespace.courses )
 };

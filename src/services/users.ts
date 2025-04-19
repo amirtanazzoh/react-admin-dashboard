@@ -20,3 +20,12 @@ export async function getUserByUserName ( username: string ): Promise<User>
         }
     } ).then( ( { data } ) => data[ 0 ] );
 }
+
+export async function getUserById ( id: number ): Promise<User>
+{
+    return appAxios.get( '/users', {
+        params: {
+            'id': id
+        }
+    } ).then( ( { data } ) => data[ 0 ] );
+}
